@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Profile picture</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Balance in savings</th>
+                    <th>Balance in current</th>
+                    <th>Action</th>
+                    <th>About</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                    <tr>
+                        <td>
+                            {% set image_filename = customer['First name'] ~ customer['Last name'] ~ customer['Username'] ~ '.jpg' %}
+                            <img src="{{ url_for('static', filename=image_filename) }}" alt="Profile Picture" style="max-width: 80px; max-height: 80px;" class="rounded-image">
+                        </td>
+                        <td>{{ customer['First name'] }}</td>
+                        <td>{{ customer['Last name'] }}</td>
+                        <td>{{ customer['Email'] }}</td>
+                        <td>{{ customer['Balance in savings'] }}</td>
+                        <td>{{ customer['Balance in current'] }}</td>
+                        {% if customer['Balance in savings'] == '0.0' and customer['Balance in current'] == '0.0' %}
+                            <td><a href="{{ url_for('delete_customer', customer_id=loop.index) }}">Supprimer</a></td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        <td><a href="{{ url_for('About', customer_id=loop.index,link='employee') }}">About</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+            <!-- Form to add a new customer -->
+        <h2>Add a new customer</h2>
+        <form method="POST" action="{{ url_for('add_customer') }}" enctype="multipart/form-data">
+            <label for="new_firstname">First name:</label>
+            <input type="text" id="new_firstname" name="new_firstname" required>
+            
+            <label for="new_lastname">Last name:</label>
+            <input type="text" id="new_lastname" name="new_lastname" required>
+            
+            <label for="new_username">Username:</label>
+            <input type="username" id="new_username" name="new_username" required>
+            
+            <label for="new_email">Email:</label>
+            <input type="text" id="new_email" name="new_email" required>
+            
+            <label for="new_password">Password:</label>
+            <input type="password" id="new_password" name="new_password" required>
+
+            <!-- Champ de fichier pour l'upload de la photo -->
+            <label for="profile_picture">Profile Picture:</label>
+            <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+
+
+            <button style="margin-top: -5px;margin-right: 1000px; margin-bottom: 20px" type="submit" class="btn btn-primary float-right" >Ajouter</button>
+            <a style=" margin-top: -65px" href="{{ url_for('logout1') }}" class="btn btn-primary float-right">Logout</a>
+        </form>
+        
+
+    </body>
+            
+        </div>
+{% endblock content %}

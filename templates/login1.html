@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <div style="margin-top: 10px;"></div>
+        <div class="text-center">
+            <h2 class="instagram-style-text">Welcome Employee</h2>
+            <div class="login-container">
+                <img src="{{ url_for('static', filename='pixou1.jpg') }}" alt="Bank Logo" class="rounded-image1" style="max-width: 128px; max-height: 128px;">
+                <form method="POST" action="">
+                    <div class="form-group">
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label(class="form-label") }}
+                        {{ form.password(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-primary btn-block") }}
+                        <!-- Ajouter le bouton "Modify" -->
+                        <!-- Ajouter de l'espace entre les boutons -->
+                        <div style="margin-top: 10px;"></div>
+                        <a href="{{ url_for('home') }}" class="btn btn-primary">home</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

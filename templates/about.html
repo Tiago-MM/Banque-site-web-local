@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+	<div class="text-center">
+	<img src="{{ url_for('static', filename='pixou1.jpg') }}" alt="Bank Logo" class="rounded-image1"style="max-width: 128px; max-height: 128px;"></div>
+    <h1>About Our Bank</h1>
+
+    <p>Welcome to World Bank, where we strive to provide exceptional banking services to our customers. Here are some key details about us:</p>
+
+    <h2>Our Mission</h2>
+    <p>At World Bank, our mission is to empower individuals and businesses by offering innovative and secure financial solutions. We are dedicated to delivering a seamless banking experience.</p>
+
+    <h2>Core Values</h2>
+    <p>Integrity, customer-centricity, innovation, and reliability are the core values that drive our daily operations. We believe in building strong and lasting relationships with our customers.</p>
+
+    <h2>Services</h2>
+    <p>Explore a wide range of banking services, including savings accounts, current accounts, online transactions, and personalized financial advice. Our goal is to meet the diverse needs of our clients.</p>
+
+    <h2>Contact Information</h2>
+    <p>If you have any questions or need assistance, feel free to contact our customer support team at <strong>support@worldbank.com</strong>.</p>
+  </div>
+{% endblock %}

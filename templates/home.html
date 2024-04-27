@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <h1 class="mb-4">Welcome to Scrooge Bank</h1>
+        <p>Choose your role:</p>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg btn-block">Customer</a>
+          </div>
+          <div class="col-md-6">
+            <a href="{{ url_for('login1') }}" class="btn btn-success btn-lg btn-block">Employee</a>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <img src="{{ url_for('static', filename='pixou1.jpg') }}" style="max-width: 256px; max-height: 256px;" class="rounded-image1">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

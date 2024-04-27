@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2 style="margin-top: 10px;margin-left: 1000px; margin-bottom: 20px">
+            {%for custo in customers%}
+            <tr>
+                {% if custo['Username']==customer.Username%}
+                    <td>
+                        {% set image_filename = custo['First name'] ~ custo['Last name'] ~ custo['Username'] ~ '.jpg' %}
+                        <img src="{{ url_for('static', filename=image_filename) }}" alt="Profile Picture" style="max-width: 160px; max-height: 160px;" class="rounded-image">
+                    </td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+            {%endfor%}
+        </h2>
+        <h3 style="margin-top: -170px;margin-left: 0px; margin-bottom: 20px">
+            My Profile
+        </h3>
+        
+        <p><strong>Email:</strong> {{ customer.Email }}</p>
+        <p><strong>Username:</strong> {{ customer.Username }}</p>
+        <p><strong>First Name:</strong> {{ customer['First name'] }}</p>
+        <p><strong>Last Name:</strong> {{ customer['Last name'] }}</p>
+        <p><strong>Balance in Savings:</strong> {{ customer['Balance in savings'] }}</p>
+        <p><strong>Balance in Current:</strong> {{ customer['Balance in current'] }}</p>
+
+        <!-- Ajouter le bouton "Modify" -->
+        <a href="{{ url_for('modify_customer') }}" class="btn btn-primary">Modify</a>
+
+        <!-- Ajouter de l'espace entre les boutons -->
+        <div style="margin-top: 10px;"></div>
+
+        {%for custo in customers%}
+            <tr>
+                {% if custo['Username']==customer.Username%}
+                    <td><a href="{{ url_for('About', customer_id=loop.index, link='customer') }}" class="btn btn-primary">Make a transaction</a></td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+        {%endfor%}
+
+
+
+
+        <!-- Bouton "Logout" aligné en haut à droite -->
+        <a style="margin-top: -5px;margin-right: -80px; margin-bottom: 20px" href="{{ url_for('logout') }}" class="btn btn-primary float-right">
+            Logout</a>
+    </div>
+{% endblock %}

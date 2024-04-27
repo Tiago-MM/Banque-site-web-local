@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+<body>
+    <h1>Client Information</h1>
+    {% if other_lines %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Balance in savings</th>
+                    <th>Balance in current</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for line in other_lines %}
+                    <tr>
+                        <td>
+                            {{ line[0] }}
+                            <div class="sub-column">{{ line[1] }}</div>
+                        </td>
+                        <td>
+                            {{ line[2] }}
+                            <div class="sub-column">{{ line[3] }}</div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td>
+                        <form method="POST" action="{{ url_for('update_balances', customer_id=customer_id, account_type='savings',customer_info=customer_info,link=link) }}">
+                            <input type="number" name="amount" placeholder="Enter amount (positive value)">
+                            <input type="text" name="nameoperation" placeholder="Enter label">
+                            <button type="submit" name="operation" value="add" class="btn-add">Add</button>
+                            <button type="submit" name="operation" value="withdraw" class="btn-withdraw">Withdraw</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ url_for('update_balances', customer_id=customer_id, account_type='current',customer_info=customer_info,link=link) }}">
+                            <input type="number" name="amount" placeholder="Enter amount (positive value)">
+                            <input type="text" name="nameoperation" placeholder="Enter label">
+                            <button type="submit" name="operation" value="add" class="btn-add">Add</button>
+                            <button type="submit" name="operation" value="withdraw" class="btn-withdraw">Withdraw</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ saving }}
+                    </td>
+                    <td>
+                        {{ current }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{{ url_for(link) }}" class="return-button">Return</a>
+    {% else %}
+        <p>Client non trouvé</p>
+    {% endif %}
+</body>
+</html>
+{% endblock content %}

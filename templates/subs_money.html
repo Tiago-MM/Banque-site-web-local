@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Substract Money in Balance in Savings</h2>
+        <p>Welcome, {{ customer['Username'] }}!</p>
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="amount">Amount to substract:</label>
+                <input type="text" id="amount" name="amount" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Substract Money</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
