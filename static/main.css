@@ -1,0 +1,56 @@
+body {
+  background-color: #fafafa;
+}
+
+.login-container {
+  max-width: 350px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  margin-top: 50px;
+}
+
+.logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #262626;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #dbdbdb;
+}
+
+.btn {
+  background-color: #0095f6;
+  color: white;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #007bb5;
+}
+
+.text-muted {
+  color: #8e8e8e;
+}
+
+.instagram-header {
+  background-color: #405DE6;
+  padding: 20px;
+  text-align: center;
+}
+
+.instagram-header-text {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
